@@ -9,6 +9,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'tomasr/molokai'
 Plugin 'Mizuchi/STL-Syntax'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kshenoy/vim-signature'
 
 call vundle#end()
 filetype plugin indent on
@@ -19,8 +21,8 @@ filetype plugin indent on
 "
 
 let g:ycm_complete_in_comments = 1
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
+let g:ycm_error_symbol = '>'
+let g:ycm_warning_symbol = '*'
 let g:ycm_confirm_extra_conf = 0
 
 nnoremap <F4> :YcmDiags<CR>
@@ -52,11 +54,19 @@ map <C-n> :NERDTreeToggle<CR>
 "           Powerline:
 "
 "
-
 let g:Powerline_colorscheme = 'solarized256'
 let g:Powerline_symbols = 'fancy'
 
 "
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"           vim-signture:
+"
+
+let g:SignatureForceMarkerPlacement=1
+
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -73,8 +83,12 @@ set wildmenu
 
 " 配色方案
 set t_Co=256
-set background=dark
-colorscheme molokai
+"set background=dark
+"colorscheme molokai
+
+set background=light
+colorscheme solarized
+let g:solarized_termcolors=256
 
 " 总是显示状态栏
 set laststatus=2
@@ -93,6 +107,8 @@ set scrolloff=10
 " 高亮显示当前行/列
 set cursorline
 set cursorcolumn
+
+set encoding=utf-8
 
 " 高亮显示搜索结果
 set hlsearch
@@ -119,6 +135,7 @@ set cindent
 set autoindent
 set smartindent
 set cinoptions={0,:0,g0,l1,t0,(0
+set backspace=2
 
 " 关闭swap文件
 set noswapfile
@@ -142,4 +159,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" ctrl + l 清楚查找匹配的高亮显示
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
+" ctrl + a 使前一个单词变为大写 
+inoremap <C-a> <C-[>gUiwea
